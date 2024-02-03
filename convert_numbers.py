@@ -10,7 +10,8 @@ def read_file(file_path):
         print(f"Error: File '{file_path}' not found.")
         sys.exit(1)
     except ValueError:
-        print(f"Error: Invalid data found in '{file_path}'. Please ensure all entries are valid numbers.")
+        print(f"Error: Invalid data found in '{file_path}'. "
+              f"Please ensure all entries are valid numbers.")
         sys.exit(1)
 
 def convert_to_binary_hex(data):
@@ -35,7 +36,8 @@ def main():
 
         with open("ConversionResults.txt", 'w') as result_file:
             for i in range(num_records):
-                result_file.write(f"Original: {data[i]}, Binary: {binary_results[i]}, Hex: {hex_results[i]}\n")
+                result_file.write(f"Original: {data[i]}, Binary: {binary_results[i]},"
+                                  f"Hex: {hex_results[i]}\n")
 
             result_file.write(f"Time Elapsed: {end_time - start_time} seconds\n")
 
