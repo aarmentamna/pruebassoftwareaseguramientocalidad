@@ -18,14 +18,18 @@ def read_file(file_path):
     """
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            data = [float(line.strip()) for line in file]
-        return data, len(data)
+            data = []
+            for line in file:
+                try:
+                    num = float(line.strip())
+                    data.append(num)
+                except ValueError:
+                    print(f"Warning: Invalid data found in '{file_path}'. "
+                          f"Skipping entry: {line.strip()}")
+            num_records = len(data)
+        return data, num_records
     except FileNotFoundError:
         print(f"Error: File '{file_path}' not found.")
-        sys.exit(1)
-    except ValueError:
-        print(f"Error: Invalid data found in '{file_path}'. "
-              f"Please ensure all entries are valid numbers.")
         sys.exit(1)
 
 def convert_to_binary_hex(data):
